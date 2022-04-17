@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,500;1,500&display=swap");
+
+.header {
+  background-color: rgba(8, 18, 212, 0.411);
+  overflow: hidden;
+  font-family: "DM Sans", sans-serif;
+}
+
+.slider ul {
+  width: 100%;
+  transition: 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .slider ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+.slider ul li {
+  margin-block: 0.5rem;
+  margin-inline: 2rem;
+  list-style: none;
+}
+
+.slider ul li a:hover {
+  color: red;
+}
+.slider ul li a {
+  display: inline-block;
+  position: relative;
+  /* padding-bottom: 3px; */
+}
+.slider ul li a::after {
+  content: "";
+  display: block;
+
+  margin: 0;
+  height: 3px;
+  width: 0;
+  background-color: transparent;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+.slider ul li a:hover::after {
+  width: 100%;
+  background-color: red;
+}
+
+.slider ul li a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.5s ease;
+}
+.menu-icon .menu {
+  display: none;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+.closed {
+  display: none;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  justify-content: flex-start;
+}
+.closed .close {
+  font-size: 25px;
+}
+.slider ul .mygreen {
+  background-color: green;
+  border-radius: 4px;
+  padding: 10px 30px;
+}
+@media only screen and (max-width: 920px) {
+  .slider {
+    position: fixed;
+    min-width: 100%;
+    height: 100vh;
+    right: -100%;
+    top: 0;
+    /* top: -100%; */
+    background-color: rgb(73, 75, 218);
+    transition: 1s ease;
+  }
+  .slider.active {
+    right: 0;
+    /* top: 0; */
+    transition: 1s ease;
+  }
+  .slider ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .slider ul li {
+    margin-block: 2.5rem;
+    list-style: none;
+  }
+  .slider ul li a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+  }
+  .menu-icon {
+      display: flex;
+      justify-content: flex-end;
+      padding: 7px;
+  }
+  .menu-icon .menu {
+    display: block;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+  }
+  .closed {
+    display: flex;
+    color: #fff;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .closed .close {
+    font-size: 35px;
+  }
+}
