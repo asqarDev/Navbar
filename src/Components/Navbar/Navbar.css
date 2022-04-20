@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0;
 }
 
 /* .slider ul {
@@ -108,9 +109,9 @@
     color: #fff;
   }
   .menu-icon {
-      display: flex;
-      justify-content: flex-end;
-      padding: 7px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 7px;
   }
   .menu-icon .menu {
     display: block;
