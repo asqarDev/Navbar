@@ -88,6 +88,7 @@
     /* top: -100%; */
     background-color: rgb(73, 75, 218);
     transition: 1s ease;
+    z-index: 2;
   }
   .slider.active {
     right: 0;

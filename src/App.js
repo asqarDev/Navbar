@@ -11,7 +11,7 @@ import React from "react";
 import "./Fa/css/all.min.css";
 import { Navbar } from "./Components/Navbar/Navbar";
 import Home from "./Components/js/Home";
-import About from "./Components/js/About";
+import {About} from "./Components/js/About";
 import Service from "./Components/js/Service";
 import Contact from "./Components/js/Contact";
 import Footer from "./Components/Footer/Footer";
