@@ -2,11 +2,14 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Button, Modal, Spinner } from "react-bootstrap";
 import home from "./../css/HomePage.module.css";
+import Pagination from "./Pagination";
 export default class Home extends Component {
   state = {
     jsonData: [],
     show: false,
     loader: false,
+    page: 1,
+    perPage: 10,
   };
 
   handleClose = () => {
@@ -34,7 +37,6 @@ export default class Home extends Component {
       .catch((res) => {
         console.log("error");
       });
-      
   };
   getData = () => {
     this.setState({
@@ -62,8 +64,17 @@ export default class Home extends Component {
     this.getData();
   }
   render() {
-    const { jsonData } = this.state;
+    const { jsonData, page, perPage } = this.state;
 
+    const indexOfLastPage = page * perPage;
+    const indexOfFirstPage = indexOfLastPage - perPage;
+    const pagePost = jsonData.slice(indexOfFirstPage, indexOfLastPage);
+
+    const paginate = (pageNumber) => {
+      this.setState({
+        page: pageNumber,
+      });
+    };
     return (
       <div className="">
         <div className={`${home.homeImage} `}>
@@ -80,17 +91,33 @@ export default class Home extends Component {
                 <Spinner color="dark" />
               </div>
             ) : (
-              jsonData.map((item, index) => (
-                <div className="col-lg-8 my-3" key={index}>
-                  <div className="card p-4">
-                    <h5>
-                      {item.id} {item.title}
-                    </h5>
-                    <p>{item.body}</p>
-                  </div>
-                </div>
-              ))
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    {/* <th>body</th> */}
+                  </tr>
+                </thead>
+                <tbody>
+                  {pagePost.map((item, index) => (
+                    <tr>
+                      <th>{item.id}</th>
+                      <th>{item.title}</th>
+                      {/* <th>{item.body}</th> */}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             )}
+          </div>
+          <div className="row">
+            <Pagination
+              perPage={perPage}
+              totalPage={jsonData.length}
+              paginate={paginate}
+              page={page}
+            />
           </div>
         </div>
 
@@ -149,7 +176,7 @@ export default class Home extends Component {
               <Button variant="secondary" onClick={this.handleClose}>
                 Close
               </Button>
-              <Button variant="primary" onClick={()=>this.submit()}>
+              <Button variant="primary" onClick={() => this.submit()}>
                 Save Changes
               </Button>
             </Modal.Footer>

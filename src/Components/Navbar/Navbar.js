@@ -23,7 +23,7 @@ export const Navbar = () => {
               <FaTimes className="close" />
             </div>
             <li onClick={showMenu}>
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li onClick={showMenu}>
               <Link to="/about">About</Link>
